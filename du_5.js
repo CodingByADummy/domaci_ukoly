@@ -105,4 +105,61 @@ function theList(dtoIn){
     const name = {}
     let uniqueMaleName = uniqueNames(allMaleNames);
     name.label = uniqueMaleName[i];
-    
+    name.value = allMaleNames.filter(name => name === uniqueMaleName[i]).length;
+    maleNamesCharData.push(name);
+  };
+  charData.male = maleNamesCharData;
+
+  // part where we get all the female names count for the character data
+  let allFemaleNamesCharData = []
+  for (i = 0; i < uniqueNames(allFemaleNames).length; i++){
+    const name = {}
+    let uniqueFemaleName = uniqueNames(allFemaleNames);
+    name.label = uniqueFemaleName[i];
+    name.value = allFemaleNames.filter(name => name === uniqueFemaleName[i]).length;
+    allFemaleNamesCharData.push(name);
+  };
+  charData.female = allFemaleNamesCharData;
+  
+  //part where we get all the female names count that only work part time for the character data
+  let allFemalePartTimeNamesCharData = []
+  for (i = 0; i < uniqueNames(allFemalePartTimeNames).length; i++){
+    const name = {}
+    let uniqueFemalePartTimeName = uniqueNames(allFemalePartTimeNames);
+    name.label = uniqueFemalePartTimeName[i];
+    name.value = allFemalePartTimeNames.filter(name => name === uniqueFemalePartTimeName[i]).length;
+    allFemalePartTimeNamesCharData.push(name);
+  };
+  charData.allfemalePartTime = allFemalePartTimeNamesCharData;
+
+  // part where we get all the male names count that only work full time for the character data
+  let maleFullTimeNameCharData = []
+  for (i = 0; i < uniqueNames(allMaleFullTimeNames).length; i++){
+    const name = {}
+    let uniqueMaleFullTimeName = uniqueNames(allMaleFullTimeNames);
+    name.label = uniqueMaleFullTimeName[i];
+    name.value = allMaleFullTimeNames.filter(name => name === uniqueMaleFullTimeName[i]).length;
+    maleFullTimeNameCharData.push(name);
+  };
+  charData.maleFullTime = maleFullTimeNameCharData;
+
+  dtoOut.names =  names;
+  dtoOut.charData = charData;
+
+  return dtoOut;
+};
+
+function main(dtoIn){
+  // error chceck --> looking if the numbers are not negative and are round and are actually numbers 
+  if (isNaN(dtoIn.count) || isNaN(dtoIn.age.max) || isNaN(dtoIn.age.min) || dtoIn.count % 1 !==0 ||dtoIn.age.max % 1 !==0 || dtoIn.age.min % 1 !==0 || dtoIn.count<0 || dtoIn.age.max<0  ||dtoIn.age.min<0 ){
+    return console.log(`Některá ze zadaných hohnot není číslo nebo celé kladné číslo. Prosím, zadejte správné hodnoty`);
+
+  }
+
+  else{
+  // executing the function that gets all the values we need 
+  console.dir(theList(dtoIn), {depth: null});
+  return (theList(dtoIn))
+  };
+
+};
