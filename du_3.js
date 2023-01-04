@@ -1,3 +1,5 @@
+//this program creates a list with employes with random name, birthday, workload and gender
+
 function main(dtoIn){
   // error chceck --> looking if the numbers are not negative and are round 
   if (isNaN(dtoIn.count) || isNaN(dtoIn.age.max) || isNaN(dtoIn.age.min) || dtoIn.count % 1 !==0 ||dtoIn.age.max % 1 !==0 || dtoIn.age.min % 1 !==0 || dtoIn.count<0 || dtoIn.age.max<0  ||dtoIn.age.min<0 ){
