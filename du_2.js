@@ -1,3 +1,6 @@
+
+// this program converts decimal nuumber to hexadeciaml 
+
 function decimalToHexadecimal(decimalNum){
 
     if (isNaN(decimalNum) || decimalNum %1 !== 0){
